@@ -4,10 +4,10 @@
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE}" )/.." && pwd )"
 WHISPER_DIR="$DOTFILES_DIR/whisper"
 
-echo "🎤 Installing Whisper dictation..."
+echo "Installing Whisper dictation..."
 
 # Install system dependencies
-sudo apt install -y build-essential cmake alsa-utils wtype pulseaudio-utils
+sudo apt install -y build-essential cmake alsa-utils xdotool pulseaudio-utils git
 
 # Build whisper.cpp if not present
 if [ ! -d "$HOME/whisper.cpp" ]; then
@@ -25,5 +25,4 @@ ln -sf "$WHISPER_DIR/vocab_correct.sh" "$HOME/vocab_correct.sh"
 chmod +x "$HOME/dictate.sh"
 chmod +x "$HOME/vocab_correct.sh"
 
-echo "✅ Whisper module installed! Configure keyboard shortcut in Settings."
-
+echo "Whisper module installed! Configure keyboard shortcut in Settings."

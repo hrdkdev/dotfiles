@@ -4,7 +4,7 @@
 LOCK_FILE="/tmp/whisper_dictation.lock"
 AUDIO_FILE="/tmp/whisper_audio.wav"
 WHISPER_PATH="$HOME/whisper.cpp/build/bin/whisper-cli"
-MODEL_PATH="$HOME/whisper.cpp/models/ggml-base.en.bin"
+MODEL_PATH="$HOME/whisper.cpp/models/ggml-small.en.bin"
 VOCAB_CORRECT="$HOME/dotfiles/whisper/vocab_correct.sh"
 
 # Sound feedback
@@ -26,7 +26,7 @@ if [ -f "$LOCK_FILE" ]; then
     TEXT=$(bash "$VOCAB_CORRECT" "$RAW_TEXT")
 
     if [ ! -z "$TEXT" ]; then
-        wtype "$TEXT "
+        xdotool type --clearmodifiers "$TEXT "
     fi
 
 else
