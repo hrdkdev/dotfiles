@@ -133,3 +133,4 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 alias lg='lazygit'
 alias sai='sudo apt install -y'
+export PATH="$HOME/.npm-global/bin:$PATH"
