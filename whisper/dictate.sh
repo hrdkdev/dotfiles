@@ -26,7 +26,16 @@ if [ -f "$LOCK_FILE" ]; then
     TEXT=$(bash "$VOCAB_CORRECT" "$RAW_TEXT")
 
     if [ ! -z "$TEXT" ]; then
-        xdotool type --clearmodifiers "$TEXT "
+        if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+            # Ensure ydotoold is running
+            if ! pgrep -x ydotoold > /dev/null; then
+                ydotoold > /dev/null 2>&1 &
+                sleep 0.5
+            fi
+            ydotool type "$TEXT "
+        else
+            xdotool type --clearmodifiers "$TEXT "
+        fi
     fi
 
 else
